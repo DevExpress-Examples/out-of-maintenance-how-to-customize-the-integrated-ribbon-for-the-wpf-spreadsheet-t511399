@@ -1,0 +1,62 @@
+﻿<dxr:DXRibbonWindow x:Class="WpfSpreadsheet_RibbonCustomization.MainWindow" mc:Ignorable="d" Title="Spreadsheet" Height="480" Width="800" 
+    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxsps="http://schemas.devexpress.com/winfx/2008/xaml/spreadsheet"
+    xmlns:local="clr-namespace:WpfSpreadsheet_RibbonCustomization">
+    <Grid>
+        <dxsps:SpreadsheetControl CommandBarStyle="Ribbon" ShowFormulaBar="True" DocumentSource="pack://application:,,,/WpfSpreadsheet_RibbonCustomization;component/Document.xlsx">
+            <dxsps:SpreadsheetControl.RibbonActions>
+                <!--Make the Home tab the default tab in the application.-->
+                <dxb:UpdateAction ElementName="{x:Static dxsps:DefaultBarItemNames.RibbonPage_Home}" PropertyName="IsSelected" Value="True"/>
+                
+                <!--Hide the Page Layout tab.-->
+                <dxb:UpdateAction ElementName="{x:Static dxsps:DefaultBarItemNames.RibbonPage_PageLayout}" PropertyName="IsVisible" Value="False"/>
+                
+                <!--Hide the Formulas tab.-->
+                <dxb:UpdateAction ElementName="{x:Static dxsps:DefaultBarItemNames.RibbonPage_Formulas}" PropertyName="IsVisible" Value="False"/>
+                
+                <!--Hide the Data tab.-->
+                <dxb:UpdateAction ElementName="{x:Static dxsps:DefaultBarItemNames.RibbonPage_Data}" PropertyName="IsVisible" Value="False"/>
+                
+                <!--Hide the Show group on the View tab.-->
+                <dxb:UpdateAction ElementName="{x:Static dxsps:DefaultBarItemNames.RibbonGroup_View_Show}" PropertyName="IsVisible" Value="False"/>
+                
+                <!--Hide the PivotTable item on the Insert tab, in the Tables group.-->
+                <dxb:UpdateAction ElementName="{x:Static dxsps:DefaultBarItemNames.RibbonItem_Insert_Tables_PivotTable}" PropertyName="IsVisible" Value="False"/>
+                
+                <!--Remove the Review tab.-->
+                <dxb:RemoveAction ElementName="{x:Static dxsps:DefaultBarItemNames.RibbonPage_Review}"/>
+                
+                <!--Remove the Window group on the View tab.-->
+                <dxb:RemoveAction ElementName="{x:Static dxsps:DefaultBarItemNames.RibbonGroup_View_Window}"/>
+                
+                <!--Remove the Quick Print item on the File tab, in the Common group.-->
+                <dxb:RemoveAction ElementName="{x:Static dxsps:DefaultBarItemNames.RibbonItem_File_Common_QuickPrint}"/>
+                
+                <!--Add a new group to the File tab.-->
+                <!--The group contains a single button displaying information about this example.-->
+                <dxb:InsertAction Index="2" ContainerName="{x:Static dxsps:DefaultBarItemNames.RibbonPage_File}">
+                    <dxr:RibbonPageGroup Caption="Example">
+                        <dxb:BarButtonItem Content="About"
+                                           LargeGlyph="{dx:DXImageOffice2013 Image=Info_32x32.png}"
+                                           ItemClick="About_ItemClick"/>
+                    </dxr:RibbonPageGroup>
+                </dxb:InsertAction>
+                
+                <!--Create the Comments group on the Insert tab and add the Comment button to it.-->
+                <dxb:InsertAction Index="5" ContainerName="{x:Static dxsps:DefaultBarItemNames.RibbonPage_Insert}">
+                    <dxr:RibbonPageGroup Caption="Comments">
+                        <dxb:BarButtonItem Content="Comment"
+                                           LargeGlyph="{dxsps:SpreadsheetSvgImage Name=InsertComment.svg, UseOfficeImage=True}"
+                                           Command="{Binding RelativeSource={RelativeSource Self}, Path=(dxsps:SpreadsheetControl.Spreadsheet).CommandProvider.InsertComment}"/>
+                    </dxr:RibbonPageGroup>
+                </dxb:InsertAction>
+            </dxsps:SpreadsheetControl.RibbonActions> 
+        </dxsps:SpreadsheetControl>
+    </Grid>
+</dxr:DXRibbonWindow>
