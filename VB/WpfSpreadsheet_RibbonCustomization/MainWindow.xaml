@@ -37,17 +37,20 @@
                 
                 <!--Remove the Quick Print item on the File tab, in the Common group.-->
                 <dxb:RemoveAction ElementName="{x:Static dxsps:DefaultBarItemNames.RibbonItem_File_Common_QuickPrint}"/>
-                
-                <!--Add a new group to the File tab.-->
+
+                <!--Create a new Example tab.-->
+                <!--Create the Info group on the Example tab.-->
                 <!--The group contains a single button displaying information about this example.-->
-                <dxb:InsertAction Index="2" ContainerName="{x:Static dxsps:DefaultBarItemNames.RibbonPage_File}">
-                    <dxr:RibbonPageGroup Caption="Example">
-                        <dxb:BarButtonItem Content="About"
-                                           LargeGlyph="{dx:DXImageOffice2013 Image=Info_32x32.png}"
-                                           ItemClick="About_ItemClick"/>
-                    </dxr:RibbonPageGroup>
+                <dxb:InsertAction Index="8" ContainerName="{x:Static dxsps:DefaultBarItemNames.RibbonCategory_Default}">
+                    <dxr:RibbonPage x:Name="RibbonPage_Example" Caption="Example">
+                        <dxr:RibbonPageGroup Caption="Info">
+                            <dxb:BarButtonItem Content="About" 
+                               LargeGlyph="{dx:SvgImageSource Uri='pack://application:,,,/WpfSpreadsheet_RibbonCustomization;component/Images/About.svg'}" 
+                               ItemClick="About_ItemClick"/>
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
                 </dxb:InsertAction>
-                
+
                 <!--Create the Comments group on the Insert tab and add the Comment button to it.-->
                 <dxb:InsertAction Index="5" ContainerName="{x:Static dxsps:DefaultBarItemNames.RibbonPage_Insert}">
                     <dxr:RibbonPageGroup Caption="Comments">
