@@ -1,7 +1,7 @@
 <!-- default file list -->
 *Files to look at*:
 
-* **[MainWindow.xaml](./CS/WpfSpreadsheet_RibbonCustomization/MainWindow.xaml) (VB: [MainWindow.xaml.vb](./VB/WpfSpreadsheet_RibbonCustomization/MainWindow.xaml.vb))**
+* **[MainWindow.xaml](./CS/WpfSpreadsheet_RibbonCustomization/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/WpfSpreadsheet_RibbonCustomization/MainWindow.xaml))**
 * [MainWindow.xaml.cs](./CS/WpfSpreadsheet_RibbonCustomization/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/WpfSpreadsheet_RibbonCustomization/MainWindow.xaml.vb))
 <!-- default file list end -->
 # How to customize the integrated ribbon for the WPF Spreadsheet
